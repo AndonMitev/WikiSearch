@@ -1,0 +1,12 @@
+<app-register (output)="registerUser($event)">
+  <div>
+    <h2 #title>Register</h2>
+    <h2>{{username$ | async}}</h2>
+    <h2>Status</h2>
+    <h2>{{userStatus$ | async}}</h2>
+  </div>
+</app-register>
+<div>
+  <h2>Change Role</h2>
+  <app-change-roles [dropdownValues]="dropdownValues" (changeValue)="changeStatus($event)"></app-change-roles>
+</div>

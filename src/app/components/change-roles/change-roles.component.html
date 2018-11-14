@@ -1,0 +1,4 @@
+<select (change)="changeRole($event)">
+  <option value=""></option>
+  <option *ngFor="let dropdownValue of dropdownValues" [value]="dropdownValue">{{dropdownValue}}</option>
+</select>
