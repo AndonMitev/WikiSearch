@@ -7,7 +7,6 @@ import { UserStatusTypes } from '../../shared/enumerations/user-status';
 })
 export class ChangeRolesComponent {
 
-
   @Input()
   dropdownValues: string[];
 

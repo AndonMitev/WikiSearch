@@ -1,31 +1,53 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Component, Input } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Subject } from 'rxjs';
+import { Action } from '@ngrx/store';
+import { DispatcherToken } from './shared/tokens/dispatcher.token';
+import { By } from '@angular/platform-browser';
+import { UserActionsTypes } from './store/user/user.actions';
 
-describe('AppComponent', () => {
+@Component({
+  selector: 'app-change-roles',
+  template: ''
+})
+class ChangeRolesMockComponent {
+  @Input()
+  dropdownValues: any[];
+}
+
+fdescribe('AppComponent', () => {
+  // let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let dispatcher$: Subject<Function>;
+  let store: any;
+  const dispatchedActions: any[] = [];
+
   beforeEach(async(() => {
+    dispatcher$ = new Subject<Function>();
+    store = { dispatch: action => dispatchedActions.push(action) };
+
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        ChangeRolesMockComponent
       ],
+      providers: [
+        {
+          provide: DispatcherToken,
+          useValue: dispatcher$
+        }
+      ],
+      imports: [
+        RouterTestingModule
+      ]
     }).compileComponents();
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'wiki-search'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('wiki-search');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to wiki-search!');
   });
 });

@@ -1,6 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
   <h2>Change Role</h2>
-  <app-change-roles [dropdownValues]="dropdownValues" (changeValue)="changeStatus($event)"></app-change-roles>
+  <app-change-roles
+    id="change-roles"
+    [dropdownValues]="dropdownValues"
+    (changeValue)="changeStatus($event)">
+  </app-change-roles>
 </div>
 <router-outlet></router-outlet>
