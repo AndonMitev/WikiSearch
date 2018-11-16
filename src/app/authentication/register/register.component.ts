@@ -1,6 +1,5 @@
 import { Component, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

@@ -1,0 +1,9 @@
+<div>
+  <h2 [ngClass]="{'red':viewModel.isRed}">Searched for {{viewModel.title | uppercase}}</h2>
+  <button (click)="deleteItem(viewModel.index)" [disabled]=viewModel.disabled>Delete</button>
+  <ul>
+    <li *ngFor="let item of viewModel.data">
+      <span>{{item}}</span>
+    </li>
+  </ul>
+</div>

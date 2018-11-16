@@ -11,9 +11,6 @@ import { RegisterUserAction, SwitchRoleAction } from '../store/user/user.actions
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent {
-
-  public dropdownValues: string[] = dropdownValues;
-
   constructor(
     @Inject(UserToken)
     public username$: Observable<string>,
@@ -22,14 +19,11 @@ export class AuthenticationComponent {
     @Inject(UserTypeToken)
     public userStatus$: Observable<string>
   ) {
-    this.userStatus$.subscribe(console.log);
-   }
+  }
 
   registerUser({ username, userType }) {
     this.dispatch(new RegisterUserAction({ username, userType }));
   }
 
-  changeStatus(userStatus) {
-    this.dispatch(new SwitchRoleAction(userStatus));
-  }
+
 }

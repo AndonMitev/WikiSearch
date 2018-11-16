@@ -13,3 +13,8 @@ export const userTypeSelector = createSelector(
   state => state.userType
 );
 
+export const isUserLoggedInSelector = createSelector(
+  userFeature,
+  state => state.isLoggedIn
+);
+

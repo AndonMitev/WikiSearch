@@ -1,0 +1,9 @@
+<div *ngFor="let article of listArticles">
+  <h2>Searched for {{article.title | uppercase}}</h2>
+  <ul>
+    <li *ngFor="let item of article.info; let i = index">
+      <span>{{item}}</span>
+      <button></button>
+   </li>
+  </ul>
+</div>

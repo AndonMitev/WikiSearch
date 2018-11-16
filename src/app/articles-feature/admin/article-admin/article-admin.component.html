@@ -1,0 +1,6 @@
+<app-admin-search (sendValue)="searchData($event)"></app-admin-search>
+<app-list-articles-admin
+  *ngFor="let article of articles$.listBehavior$ | async; let i = index"
+  [viewModel]="article"
+  (removeArticle)="deleteArticle($event)">
+</app-list-articles-admin>
