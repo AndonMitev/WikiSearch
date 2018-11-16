@@ -1,8 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { DispatcherToken } from 'src/app/shared/tokens/dispatcher.token';
 import { SearchArticleAction, DeleteArticleAction } from '../admin-store/action/admin.action';
-import { ArticlesToken } from 'src/app/shared/tokens/article.token';
-import { Observable } from 'rxjs';
 import { ListBehavior } from '../list-behavior';
 
 @Component({
@@ -17,7 +15,7 @@ export class ArticleAdminComponent {
     private dispatcher: Function,
     @Inject(ListBehavior)
     public articles$: ListBehavior
-  ) {}
+  ) { }
 
   searchData(inputValue) {
     this.dispatcher(new SearchArticleAction(inputValue));

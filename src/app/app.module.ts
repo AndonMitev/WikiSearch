@@ -21,12 +21,14 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { AdminSearchComponent } from './articles-feature/admin/admin-search/admin-search.component';
 import { AdminEffects } from './articles-feature/admin/admin-store/effect/admin.effects';
 import { HeadersInterceptor } from './shared/interceptor/headers.interceptor';
-import { ArticlesToken } from './shared/tokens/article.token';
-import { selectArticles } from './store/app.selector';
+import { ArticlesToken, ArticleIndexToken } from './shared/tokens/article.token';
+import { selectArticles, selectArticleIdx } from './store/app.selector';
 import { AppState } from './store/app.state';
 import { appReducers } from './store/app.reducer';
 import { ListArticlesComponent } from './articles-feature/list-articles/list-articles.component';
 import { ListArticlesAdminComponent } from './articles-feature/admin/list-articles-admin/list-articles-admin.component';
+import { DecisionMakerToken } from './shared/tokens/desicion-maker.token';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' },
@@ -97,6 +99,11 @@ const routes: Routes = [
     {
       provide: ArticlesToken,
       useFactory: store => store.pipe(select(selectArticles)),
+      deps: [Store]
+    },
+    {
+      provide: ArticleIndexToken,
+      useFactory: store => store.pipe(select(selectArticleIdx)),
       deps: [Store]
     }
   ],

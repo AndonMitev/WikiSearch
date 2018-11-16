@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ArticlesViewModel } from 'src/app/shared/models/articles.view-model';
 
 @Component({
   selector: 'app-list-articles',
@@ -8,5 +9,19 @@ import { Component, Input } from '@angular/core';
 export class ListArticlesComponent {
 
   @Input()
-  public listArticles: any;
+  public viewModel: ArticlesViewModel;
+
+  @Output()
+  articleIdx = new EventEmitter();
+
+  @Output()
+  newArticleData = new EventEmitter();
+
+  deleteArticle(idx) {
+    this.articleIdx.emit(idx);
+  }
+
+  sendData(newTitle, index) {
+    this.newArticleData.emit({newTitle, index});
+  }
 }

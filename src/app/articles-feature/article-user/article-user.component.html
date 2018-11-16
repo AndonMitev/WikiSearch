@@ -1,1 +1,7 @@
-<app-list-articles [listArticles]="data$ | async"></app-list-articles>
+<app-list-articles
+  *ngFor="let article of data$.articlesViewModel$ | async"
+  [viewModel]=article
+  (articleIdx)="getArticleIdx($event)"
+  (newArticleData)="sendDataToAction($event)"  
+  >
+</app-list-articles>

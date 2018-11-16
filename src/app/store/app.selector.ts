@@ -7,3 +7,9 @@ export const selectArticles = createSelector(
   AppSelector,
   state => state.articles
 );
+
+export const selectArticleIdx = createSelector(
+  AppSelector,
+  state => state.articleIdx
+);
+

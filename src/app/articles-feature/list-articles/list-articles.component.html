@@ -1,9 +1,12 @@
-<div *ngFor="let article of listArticles">
-  <h2>Searched for {{article.title | uppercase}}</h2>
-  <ul>
-    <li *ngFor="let item of article.info; let i = index">
-      <span>{{item}}</span>
-      <button></button>
-   </li>
-  </ul>
-</div>
+<h2
+  [ngClass]="{ 'yellow':viewModel.titleColor }"
+  *ngIf="!viewModel.isEditable"
+  (click)="deleteArticle(viewModel.index)">
+  Searched for {{viewModel.title | uppercase}}
+</h2>
+<input #newTitle *ngIf="viewModel.isEditable" [value]="viewModel.title" (blur)="sendData(newTitle.value, viewModel.index)" />
+<ul>
+  <li *ngFor="let item of viewModel.articles; let i = index">
+    <span>{{item}}</span>
+  </li>
+</ul>
